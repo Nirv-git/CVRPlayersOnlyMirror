@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -67,6 +67,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ReflectionTexLeft:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ReflectionTexRight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TransparencyTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -78,8 +86,6 @@ Material:
     - _CullMode: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistanceFade: 2
-    - _DistanceFadeLength: 1
     - _DstBlend: 0
     - _FresnelScale: 0.75
     - _G: 1
