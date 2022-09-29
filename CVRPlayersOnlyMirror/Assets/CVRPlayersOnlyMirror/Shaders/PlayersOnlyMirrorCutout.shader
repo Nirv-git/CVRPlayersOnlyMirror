@@ -91,7 +91,11 @@ Shader "Mirror/CVRPlayersOnlyMirrorCutout"
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
                 half4 tex = tex2D(_MainTex, i.uv);
-                half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
+                //half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
+				
+				float4 projCoord = UNITY_PROJ_COORD(i.refl);
+                float2 proj2 = float2(1 - projCoord.x / projCoord.w, projCoord.y / projCoord.w);
+                half4 refl = unity_StereoEyeIndex == 0 ? tex2D(_ReflectionTexLeft, proj2) : tex2D(_ReflectionTexRight, proj2);
 
                 // Hiding background
                 if (_HideBackground) {

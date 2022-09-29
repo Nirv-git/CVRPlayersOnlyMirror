@@ -1,6 +1,6 @@
 # CVRPlayersOnlyMirror
 
-This is a modification of [VRCPlayersOnlyMirror](https://github.com/acertainbluecat/VRCPlayersOnlyMirror), v0xie gave instructions on how to convert the mirror shader to be CVR compatible *(_ReflectionTexLeft/_ReflectionTex1 to _ReflectionTexLeft/_ReflectionTexRight)*
+This is a modification of [VRCPlayersOnlyMirror](https://github.com/acertainbluecat/VRCPlayersOnlyMirror), v0xie gave instructions on how to convert the mirror shader to be CVR compatible *(_ReflectionTexLeft/_ReflectionTex1 to _ReflectionTexLeft/_ReflectionTexRight and some coordinate changes)*
 
 ------
 
