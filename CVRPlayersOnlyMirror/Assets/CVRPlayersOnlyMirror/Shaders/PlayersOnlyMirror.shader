@@ -1,16 +1,18 @@
-﻿Shader "Mirror/VRCPlayersOnlyMirror"
+﻿Shader "Mirror/CVRPlayersOnlyMirror"
 {
     Properties
     { 
         _MainTex("Base (RGB)", 2D) = "white" {}
         [HideInInspector] _ReflectionTexLeft("", 2D) = "white" {}
         [HideInInspector] _ReflectionTexRight("", 2D) = "white" {}
-        [Toggle(HideBackground)] _HideBackground("Hide Background", Float) = 0
-        [Toggle(IgnoreEffects)] _IgnoreEffects("Ignore Effects", Float) = 0
+        [ToggleUI(HideBackground)] _HideBackground("Hide Background", Float) = 0
+        [ToggleUI(IgnoreEffects)] _IgnoreEffects("Ignore Effects", Float) = 0
         _Transparency("Transparency", Range(0, 1)) = 1
         _TransparencyTex("Transparency Mask", 2D) = "white" {}
         _DistanceFade("Distance Fade", Range(0,20)) = 0
         _DistanceFadeLength("Distance Fade Length", Range(0,10)) = 1
+        [ToggleUI(SmoothEdge)] _SmoothEdge("Smooth Edge", Float) = 1
+        _AlphaTweakLevel("Alpha Tweak Level", Range(0,1)) = 0.75
         //Stencils
         [Space(50)] _Stencil ("Stencil ID", Float) = 0
         [Enum(UnityEngine.Rendering.CompareFunction)] _StencilCompareAction ("Stencil Compare Function", int) = 0
@@ -54,6 +56,8 @@
             float _Transparency;
             float _DistanceFade;
             float _DistanceFadeLength;
+            float _SmoothEdge;
+            float _AlphaTweakLevel;
 
             sampler2D _ReflectionTexLeft;
             sampler2D _ReflectionTexRight;
@@ -103,16 +107,21 @@
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
                 half4 tex = tex2D(_MainTex, i.uv);
                 half4 trans = tex2D(_TransparencyTex, i.uv);
-                //half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
-				
-				float4 projCoord = UNITY_PROJ_COORD(i.refl);
-                float2 proj2 = float2(1 - projCoord.x / projCoord.w, projCoord.y / projCoord.w);
-                half4 refl = unity_StereoEyeIndex == 0 ? tex2D(_ReflectionTexLeft, proj2) : tex2D(_ReflectionTexRight, proj2);
+                half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
 
                 // Hiding background
                 if (_HideBackground) {
-                    refl.a = refl.a > 0 ? 1 : 
-                                    _IgnoreEffects != 1 && dot(refl.rgb, fixed3(1,1,1)) / 3 > 0.01 ? 1 : 0;
+                    half power = dot(refl.rgb, fixed3(1,1,1)) / 3;
+                    bool applyIgnoreEffects = ! _IgnoreEffects && power > 0.01;
+                    if (_SmoothEdge)
+                    {
+                        refl.a = refl.a > 0 ? refl.a : 
+                                        applyIgnoreEffects ? power : 0;
+                        refl.a = smoothstep(0, _AlphaTweakLevel, refl.a);
+                    } else {
+                        refl.a = refl.a > 0 ? 1 : 
+                                        applyIgnoreEffects ? 1 : 0;
+                    }
                 } else {
                     refl.a = 1;
                 }

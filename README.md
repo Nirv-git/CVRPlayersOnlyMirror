@@ -1,6 +1,6 @@
 # CVRPlayersOnlyMirror
 
-This is a modification of [VRCPlayersOnlyMirror](https://github.com/acertainbluecat/VRCPlayersOnlyMirror), v0xie gave instructions on how to convert the mirror shader to be CVR compatible *(_ReflectionTex0/_ReflectionTex1 to _ReflectionTexLeft/_ReflectionTexRight)*
+This is a modification of [VRCPlayersOnlyMirror](https://github.com/acertainbluecat/VRCPlayersOnlyMirror), v0xie gave instructions on how to convert the mirror shader to be CVR compatible *(_ReflectionTexLeft/_ReflectionTex1 to _ReflectionTexLeft/_ReflectionTexRight)*
 
 ------
 
@@ -34,12 +34,15 @@ This is NOT a 2D camera cut out, it is a full 3D mirror.
   - **Transparency Mask** - Texture mask that adjusts the transparency of the mirror, goes from white for fully opaque, to fully transparent with black. 
   - **Distance Fade** - Distance before the mirror starts fading to zero alpha. Disabled at 0.
   - **Distance Fade Length** - The length of distance traveled needed to fade to zero alpha.
+  - **Smooth Edge** - Make edge smoother and avoid transparent object will be rendered opaque.
+  - **Alpha Tweak Level** - Adjust smooth edge power.
 
 
 # Caveats
   
-  - Most transparent materials will appear opaque in the mirror
-  - Particles, additive materials etc will have black outlines
+  - If you turn off Smooth Edge,
+    - Most transparent materials will appear opaque in the mirror
+    - Particles, additive materials etc will have black outlines
   - Transparent materials behind or in front of the mirror may overwrite or be overwritten by the mirror, adjusting the render queue can help, or as a last resort using stencils.
 
 

@@ -1,12 +1,12 @@
-Shader "Mirror/VRCPlayersOnlyMirrorCutout"
+Shader "Mirror/CVRPlayersOnlyMirrorCutout"
 {
     Properties
     { 
         _MainTex("Base (RGB)", 2D) = "white" {}
         [HideInInspector] _ReflectionTexLeft("", 2D) = "white" {}
         [HideInInspector] _ReflectionTexRight("", 2D) = "white" {}
-        [Toggle(HideBackground)] _HideBackground("Hide Background", Float) = 0
-        [Toggle(IgnoreEffects)] _IgnoreEffects("Ignore Effects", Float) = 0
+        [ToggleUI(HideBackground)] _HideBackground("Hide Background", Float) = 0
+        [ToggleUI(IgnoreEffects)] _IgnoreEffects("Ignore Effects", Float) = 0
         //Stencils
         [Space(50)] _Stencil ("Stencil ID", Float) = 0
         [Enum(UnityEngine.Rendering.CompareFunction)] _StencilCompareAction ("Stencil Compare Function", int) = 0
@@ -91,11 +91,7 @@ Shader "Mirror/VRCPlayersOnlyMirrorCutout"
             {
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
                 half4 tex = tex2D(_MainTex, i.uv);
-                //half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
-				
-				float4 projCoord = UNITY_PROJ_COORD(i.refl);
-                float2 proj2 = float2(1 - projCoord.x / projCoord.w, projCoord.y / projCoord.w);
-                half4 refl = unity_StereoEyeIndex == 0 ? tex2D(_ReflectionTexLeft, proj2) : tex2D(_ReflectionTexRight, proj2);
+                half4 refl = unity_StereoEyeIndex == 0 ? tex2Dproj(_ReflectionTexLeft, UNITY_PROJ_COORD(i.refl)) : tex2Dproj(_ReflectionTexRight, UNITY_PROJ_COORD(i.refl));
 
                 // Hiding background
                 if (_HideBackground) {
