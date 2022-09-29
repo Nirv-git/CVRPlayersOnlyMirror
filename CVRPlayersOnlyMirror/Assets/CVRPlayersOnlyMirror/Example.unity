@@ -649,7 +649,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Mirror Package
 
-    https://github.com/Nirv-git/VRCPlayersOnlyMirror'
+    https://github.com/Nirv-git/CVRPlayersOnlyMirror'
 --- !u!222 &758811250
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2135,7 +2135,7 @@ MonoBehaviour:
     interactionFilter: 0
     interactionInput: 48
     interactionInputModifier: 0
-    guid: 5c029375-c555-4ca4-8ec6-18d747f95d4c
+    guid: 2d8c625e-32fa-4fdb-9bbd-6d097a15a9cd
   onEnterSeat:
     m_PersistentCalls:
       m_Calls: []
