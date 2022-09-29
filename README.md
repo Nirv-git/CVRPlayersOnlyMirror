@@ -16,7 +16,7 @@ This is NOT a 2D camera cut out, it is a full 3D mirror.
 
 # How to
 
-  - Download the Asset files in this Github repo
+  - Download the Asset files in this Github repo, or get the UnityPackage from the Releases section on the right. 
   - Example scene is provided as well as a prefab
   - The "TransparentBackground" is required for the mirror to work properly, however if you have other mirrors in your scene that are not using PlayersOnlyMirror, consider putting it on a different layer and show it on PlayersOnlyMirror's layers only. Other wise it will show up in other mirrors, such as a full mirror if PlayersOnlyMirror is also on. Resize as needed.
 
