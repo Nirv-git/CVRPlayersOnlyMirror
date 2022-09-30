@@ -99,7 +99,7 @@ MonoBehaviour:
   m_framesNeededToUpdate: 0
   m_ReflectLayers:
     serializedVersion: 2
-    m_Bits: 1073745664
+    m_Bits: 1073743104
 --- !u!1 &9122752125773744735
 GameObject:
   m_ObjectHideFlags: 0

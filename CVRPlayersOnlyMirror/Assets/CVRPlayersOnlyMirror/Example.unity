@@ -530,7 +530,7 @@ MonoBehaviour:
   m_framesNeededToUpdate: 0
   m_ReflectLayers:
     serializedVersion: 2
-    m_Bits: 1073745664
+    m_Bits: 1073743104
 --- !u!23 &564968995
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2135,7 +2135,7 @@ MonoBehaviour:
     interactionFilter: 0
     interactionInput: 48
     interactionInputModifier: 0
-    guid: 2d8c625e-32fa-4fdb-9bbd-6d097a15a9cd
+    guid: 995d63ac-f81d-4471-8993-f6489c04d770
   onEnterSeat:
     m_PersistentCalls:
       m_Calls: []
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_framesNeededToUpdate: 0
   m_ReflectLayers:
     serializedVersion: 2
-    m_Bits: 1073745664
+    m_Bits: 1073743104
 --- !u!33 &1875598542912168344
 MeshFilter:
   m_ObjectHideFlags: 0
