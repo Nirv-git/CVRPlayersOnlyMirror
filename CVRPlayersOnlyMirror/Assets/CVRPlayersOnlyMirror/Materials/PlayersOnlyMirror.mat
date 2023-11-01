@@ -2,14 +2,18 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayersOnlyMirror
   m_Shader: {fileID: 4800000, guid: 43a12c08d43d31a478d291c1b9a0aa21, type: 3}
-  m_ShaderKeywords: CUTOUT HideBackground IgnoreAdditive
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - CUTOUT
+  - HideBackground
+  - IgnoreAdditive
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -79,8 +83,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AVG: 1
+    - _AlphaTweakLevel: 0.75
     - _B: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -101,6 +107,7 @@ Material:
     - _Parallax: 0.02
     - _R: 1
     - _Shininess: 200
+    - _SmoothEdge: 1
     - _SrcBlend: 1
     - _Stencil: 0
     - _StencilCompareAction: 0
@@ -132,3 +139,4 @@ Material:
     - _ReflectionColor: {r: 0.53999996, g: 0.95, b: 0.98999995, a: 0.5}
     - _SpecularColor: {r: 0.72, g: 0.72, b: 0.72, a: 1}
     - _WorldLightDir: {r: 0, g: 0.1, b: -0.5, a: 0}
+  m_BuildTextureStacks: []
